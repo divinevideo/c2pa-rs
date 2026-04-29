@@ -1,58 +1,16 @@
-name: 🐛 Bug report
-description: Report a problem or unexpected behavior
+name: Bug Report
+description: Report a bug or regression
+title: "fix: "
+labels: [bug]
 body:
-  - type: dropdown
-    id: component
+  - type: markdown
     attributes:
-      label: Component
-      description: Which tool or component are you having problems with?
-      options:
-        - c2pa-rs
-        - c2patool
-        - c2pa-c
-        - Other
-    validations:
-      required: true
-  - type: input
-    id: component-other
-    attributes:
-      label: If Other, please specify
-      description: Which component are you using?
-  - type: input
-    id: version
-    attributes:
-      label: Version
-      description: Which version are you using?
-      placeholder: e.g., v0.71.0
-    validations:
-      required: true
-  - type: dropdown
-    id: platform
-    attributes:
-      label: Platform
-      description: Which platform are you using?
-      options:
-        - Linux
-        - macOS
-        - Windows
-        - iOS
-        - Android
-        - Other
-    validations:
-      required: true
+      value: |
+        Use generic descriptors instead of partner, customer, or brand names in public issue titles, bodies, and screenshots unless a maintainer explicitly approves naming them.
   - type: textarea
-    id: what-happened
+    id: summary
     attributes:
-      label: What happened?
-      description: Describe what went wrong. Please attach example files if possible.
-      placeholder: Describe the actual behavior you observed.
-    validations:
-      required: true
-  - type: textarea
-    id: expected-behavior
-    attributes:
-      label: What did you expect to happen?
-      description: Describe what you expected to happen instead.
-      placeholder: Describe the expected behavior.
+      label: Summary
+      description: Describe the bug and its impact on SDK, CLI, or validation behavior.
     validations:
       required: true
