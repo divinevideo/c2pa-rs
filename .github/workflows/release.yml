@@ -12,6 +12,10 @@ on:
 jobs:
   release-plz:
     name: Release-plz
+    # Upstream's crate-release automation. It publishes to crates.io and needs
+    # RELEASE_PLZ_TOKEN / CARGO_REGISTRY_TOKEN, which this fork does not and must
+    # not have. Without this guard it fails on every push to main at checkout.
+    if: github.repository == 'contentauth/c2pa-rs'
     if: github.repository == 'contentauth/c2pa-rs'
     runs-on: ubuntu-latest
 
