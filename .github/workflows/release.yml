@@ -12,6 +12,7 @@ on:
 jobs:
   release-plz:
     name: Release-plz
+    if: github.repository == 'contentauth/c2pa-rs'
     runs-on: ubuntu-latest
 
     env:
