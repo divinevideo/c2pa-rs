@@ -28,6 +28,7 @@ on:
 jobs:
   get-features:
     name: Get features
+    if: github.repository == 'contentauth/c2pa-rs'
     runs-on: ubuntu-latest
     outputs:
       rust-native-features: ${{ steps.get-features.outputs.rust-native-features }}
@@ -53,12 +54,13 @@ jobs:
     name: Unit tests (OpenSSL installed)
     needs: get-features
     if: |
+      github.repository == 'contentauth/c2pa-rs' && (
       github.event_name != 'pull_request' ||
       github.event.pull_request.author_association == 'COLLABORATOR' ||
       github.event.pull_request.author_association == 'MEMBER' ||
       github.event.pull_request.user.login == 'dependabot[bot]' ||
       contains(github.event.pull_request.labels.*.name, 'safe to test') ||
-      contains(github.event.pull_request.labels.*.name, 'check-release')
+      contains(github.event.pull_request.labels.*.name, 'check-release'))
 
     runs-on: ubuntu-latest
 
@@ -109,12 +111,13 @@ jobs:
     name: Unit tests (Rust native crypto installed)
     needs: get-features
     if: |
+      github.repository == 'contentauth/c2pa-rs' && (
       github.event_name != 'pull_request' ||
       github.event.pull_request.author_association == 'COLLABORATOR' ||
       github.event.pull_request.author_association == 'MEMBER' ||
       github.event.pull_request.user.login == 'dependabot[bot]' ||
       contains(github.event.pull_request.labels.*.name, 'safe to test') ||
-      contains(github.event.pull_request.labels.*.name, 'check-release')
+      contains(github.event.pull_request.labels.*.name, 'check-release'))
 
     runs-on: ubuntu-latest
 
@@ -165,12 +168,13 @@ jobs:
     name: Unit tests (c2patool)
     needs: get-features
     if: |
+      github.repository == 'contentauth/c2pa-rs' && (
       github.event_name != 'pull_request' ||
       github.event.pull_request.author_association == 'COLLABORATOR' ||
       github.event.pull_request.author_association == 'MEMBER' ||
       github.event.pull_request.user.login == 'dependabot[bot]' ||
       contains(github.event.pull_request.labels.*.name, 'safe to test') ||
-      contains(github.event.pull_request.labels.*.name, 'check-release')
+      contains(github.event.pull_request.labels.*.name, 'check-release'))
 
     runs-on: ubuntu-latest
 
@@ -215,12 +219,13 @@ jobs:
     name: Unit tests (Windows ARM, OpenSSL)
     needs: get-features
     if: |
+      github.repository == 'contentauth/c2pa-rs' && (
       github.event_name != 'pull_request' ||
       github.event.pull_request.author_association == 'COLLABORATOR' ||
       github.event.pull_request.author_association == 'MEMBER' ||
       github.event.pull_request.user.login == 'dependabot[bot]' ||
       contains(github.event.pull_request.labels.*.name, 'safe to test') ||
-      contains(github.event.pull_request.labels.*.name, 'check-release')
+      contains(github.event.pull_request.labels.*.name, 'check-release'))
 
     runs-on: windows-11-arm
 
@@ -245,12 +250,13 @@ jobs:
     name: Unit tests (Windows ARM, Rust native crypto)
     needs: get-features
     if: |
+      github.repository == 'contentauth/c2pa-rs' && (
       github.event_name != 'pull_request' ||
       github.event.pull_request.author_association == 'COLLABORATOR' ||
       github.event.pull_request.author_association == 'MEMBER' ||
       github.event.pull_request.user.login == 'dependabot[bot]' ||
       contains(github.event.pull_request.labels.*.name, 'safe to test') ||
-      contains(github.event.pull_request.labels.*.name, 'check-release')
+      contains(github.event.pull_request.labels.*.name, 'check-release'))
 
     runs-on: windows-11-arm
 
@@ -276,12 +282,13 @@ jobs:
     runs-on: ubuntu-latest
 
     if: |
+      github.repository == 'contentauth/c2pa-rs' && (
       github.event_name != 'pull_request' ||
       github.event.pull_request.author_association == 'COLLABORATOR' ||
       github.event.pull_request.author_association == 'MEMBER' ||
       github.event.pull_request.user.login == 'dependabot[bot]' ||
       contains(github.event.pull_request.labels.*.name, 'safe to test') ||
-      contains(github.event.pull_request.labels.*.name, 'check-release')
+      contains(github.event.pull_request.labels.*.name, 'check-release'))
 
     steps:
       - name: Checkout repository
@@ -320,12 +327,13 @@ jobs:
     # for progress.
 
     if: |
+      github.repository == 'contentauth/c2pa-rs' && (
       github.event_name != 'pull_request' ||
       github.event.pull_request.author_association == 'COLLABORATOR' ||
       github.event.pull_request.author_association == 'MEMBER' ||
       github.event.pull_request.user.login == 'dependabot[bot]' ||
       contains(github.event.pull_request.labels.*.name, 'safe to test') ||
-      contains(github.event.pull_request.labels.*.name, 'check-release')
+      contains(github.event.pull_request.labels.*.name, 'check-release'))
 
     runs-on: ubuntu-latest
 
@@ -377,12 +385,13 @@ jobs:
   cargo-check:
     name: Default features build
     if: |
+      github.repository == 'contentauth/c2pa-rs' && (
       github.event_name != 'pull_request' ||
       github.event.pull_request.author_association == 'COLLABORATOR' ||
       github.event.pull_request.author_association == 'MEMBER' ||
       github.event.pull_request.user.login == 'dependabot[bot]' ||
       contains(github.event.pull_request.labels.*.name, 'safe to test') ||
-      contains(github.event.pull_request.labels.*.name, 'check-release')
+      contains(github.event.pull_request.labels.*.name, 'check-release'))
 
     runs-on: ubuntu-latest
 
@@ -403,12 +412,13 @@ jobs:
     name: Unit tests (Wasm)
     needs: get-features
     if: |
+      github.repository == 'contentauth/c2pa-rs' && (
       github.event_name != 'pull_request' ||
       github.event.pull_request.author_association == 'COLLABORATOR' ||
       github.event.pull_request.author_association == 'MEMBER' ||
       github.event.pull_request.user.login == 'dependabot[bot]' ||
       contains(github.event.pull_request.labels.*.name, 'safe to test') ||
-      contains(github.event.pull_request.labels.*.name, 'check-release')
+      contains(github.event.pull_request.labels.*.name, 'check-release'))
 
     runs-on: ubuntu-latest
 
@@ -450,12 +460,13 @@ jobs:
   benchmarks:
     name: Run benchmarks on signing and reading
     if: |
+      github.repository == 'contentauth/c2pa-rs' && (
       github.event_name != 'pull_request' ||
       github.event.pull_request.author_association == 'COLLABORATOR' ||
       github.event.pull_request.author_association == 'MEMBER' ||
       github.event.pull_request.user.login == 'dependabot[bot]' ||
       contains(github.event.pull_request.labels.*.name, 'safe to test') ||
-      contains(github.event.pull_request.labels.*.name, 'check-release')
+      contains(github.event.pull_request.labels.*.name, 'check-release'))
 
     runs-on: ubuntu-latest
 
@@ -489,12 +500,13 @@ jobs:
     name: Unit tests (WASI)
     needs: get-features
     if: |
+      github.repository == 'contentauth/c2pa-rs' && (
       github.event_name != 'pull_request' ||
       github.event.pull_request.author_association == 'COLLABORATOR' ||
       github.event.pull_request.author_association == 'MEMBER' ||
       github.event.pull_request.user.login == 'dependabot[bot]' ||
       contains(github.event.pull_request.labels.*.name, 'safe to test') ||
-      contains(github.event.pull_request.labels.*.name, 'check-release')
+      contains(github.event.pull_request.labels.*.name, 'check-release'))
 
     runs-on: ubuntu-latest
 
@@ -538,12 +550,13 @@ jobs:
     name: Clippy
     needs: get-features
     if: |
+      github.repository == 'contentauth/c2pa-rs' && (
       github.event_name != 'pull_request' ||
       github.event.pull_request.author_association == 'COLLABORATOR' ||
       github.event.pull_request.author_association == 'MEMBER' ||
       github.event.pull_request.user.login == 'dependabot[bot]' ||
       contains(github.event.pull_request.labels.*.name, 'safe to test') ||
-      contains(github.event.pull_request.labels.*.name, 'check-release')
+      contains(github.event.pull_request.labels.*.name, 'check-release'))
 
     runs-on: ubuntu-latest
 
@@ -568,12 +581,13 @@ jobs:
   cargo_fmt:
     name: Enforce Rust code format
     if: |
+      github.repository == 'contentauth/c2pa-rs' && (
       github.event_name != 'pull_request' ||
       github.event.pull_request.author_association == 'COLLABORATOR' ||
       github.event.pull_request.author_association == 'MEMBER' ||
       github.event.pull_request.user.login == 'dependabot[bot]' ||
       contains(github.event.pull_request.labels.*.name, 'safe to test') ||
-      contains(github.event.pull_request.labels.*.name, 'check-release')
+      contains(github.event.pull_request.labels.*.name, 'check-release'))
 
     runs-on: ubuntu-latest
 
@@ -593,12 +607,13 @@ jobs:
   cargo-deny:
     name: License / vulnerability audit
     if: |
+      github.repository == 'contentauth/c2pa-rs' && (
       github.event_name != 'pull_request' ||
       github.event.pull_request.author_association == 'COLLABORATOR' ||
       github.event.pull_request.author_association == 'MEMBER' ||
       github.event.pull_request.user.login == 'dependabot[bot]' ||
       contains(github.event.pull_request.labels.*.name, 'safe to test') ||
-      contains(github.event.pull_request.labels.*.name, 'check-release')
+      contains(github.event.pull_request.labels.*.name, 'check-release'))
 
     runs-on: ubuntu-latest
 
