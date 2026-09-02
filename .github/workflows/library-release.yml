@@ -9,6 +9,7 @@ on:
 jobs:
   build:
     name: Publish c2pa-library binaries
+    if: github.repository == 'contentauth/c2pa-rs'
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -78,7 +79,7 @@ jobs:
 
   release:
     needs: build
-    if: always()
+    if: github.repository == 'contentauth/c2pa-rs' && always()
     runs-on: ubuntu-latest
     steps:
       - name: Download build artifacts
