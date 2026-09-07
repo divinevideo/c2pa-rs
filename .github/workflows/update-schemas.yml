@@ -10,6 +10,7 @@ permissions:
 
 jobs:
   repository-dispatch:
+    if: github.repository == 'contentauth/c2pa-rs'
     runs-on: ubuntu-latest
     steps:
       - name: Send repository dispatch to contentauth/opensource.contentauth.org
